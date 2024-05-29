@@ -1,0 +1,86 @@
+﻿@{
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model Category
+
+<div class="pcoded-inner-content pt-8">
+	<div class="main-body">
+		<div class="page-wrapper">
+			<div class="page-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-header">
+								</div>
+								<div class="card-block">
+									<div class="row">
+										<div class="col-sm-6 col-md-1 col-lg-4">
+											<h4 class="sub-title">Categoria</h4>
+											<div>
+												<form asp-action="AddCategory" enctype="multipart/form-data">
+													<div class="form-group">
+														<label for="Name" class="form-label">Nombre de la Categoria</label>
+														<input asp-for="Name" type="text" class="form-control" id="Name" aria-describedby="Name" maxlength="100">
+														@Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+													</div>
+
+													<div class="form-group">
+														<label for="ImageFile" class="form-label">Imagen de la Categoria</label>
+														<input asp-for="ImageFile" type="file" class="form-control" id="ImageFile" aria-describedby="ImageUrl" accept="image/*" onchange="previewImage(event)">
+														@Html.ValidationMessageFor(x => x.ImageFile, "", new { @class = "text-danger" })
+													</div>
+
+													<div class="form-check pl-4">
+														<input asp-for="IsActive" type="checkbox" class="form-check-input" id="IsActive"  aria-describedby="IsActive">
+														<label for="IsActive" class="form-check-label">Habilitada</label>
+														@Html.ValidationMessageFor(x => x.IsActive, "", new { @class = "text-danger" })
+													</div>
+
+													<button type="submit" value="Category" class="btn btn-primary text-uppercase">Agregar</button>
+												</form>
+
+												<div class="mt-3">
+													@if (!string.IsNullOrEmpty(Model.ImageUrl))
+													{
+														<img id="imagePreview" src="@Model.ImageUrl" alt="Imagen de la Categoria" class="img-thumbnail" />
+													}
+													else
+													{
+														<img id="imagePreview" src="" alt="Preview de la Imagen" class="img-thumbnail" style="display:none;" />
+													}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	<script>
+		function previewImage(event) {
+			var input = event.target;
+			var reader = new FileReader();
+
+			reader.onload = function () {
+				var dataURL = reader.result;
+				var imagePreview = document.getElementById('imagePreview');
+				imagePreview.src = dataURL;
+				imagePreview.style.display = 'block';
+			};
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	</script>
+}
