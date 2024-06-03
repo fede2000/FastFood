@@ -11,6 +11,17 @@ namespace FastFood.Rules
 		{
 			_configuration = configuration;
 		}
+		public List<Category> GetCategories()
+		{
+			var connectionString = _configuration.GetConnectionString("FastFoodDB");
+			using var connection = new SqlConnection(connectionString);
+			{
+				connection.Open();
+				var posts = connection.Query<Category>("SELECT TOP 4 * FROM Categories ORDER BY CreateDate DESC");
+
+				return posts.ToList();
+			}
+		}
 		public void InsertCategory(Category data)
 		{
 			var connectionString = _configuration.GetConnectionString("FastFoodDB");

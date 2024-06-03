@@ -222,8 +222,8 @@
                             </div>
                             <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Layout</div>
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="active">
-                                    <a href="~/index.html">
+                                <li>
+                                    <a <a asp-area="" asp-controller="Admin" asp-action="index">
                                         <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                         <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                         <span class="pcoded-mcaret"></span>
@@ -308,11 +308,14 @@
                                             </a>
                                         </li>
                                         <li class="breadcrumb-item">
-                                            <a href="#!">Breadcrumb</a>
+                                            <a asp-area="" asp-controller="Admin" asp-action="Index">Inicio</a>
                                         </li>
-                                        <li class="breadcrumb-item">
-                                            <a href="#!">Caption Breadcrumb</a>
-                                        </li>
+                                        @if (ViewBag.Page != null)
+                                        {
+                                            <li class="breadcrumb-item">
+                                                <a href="#!">@ViewBag.Page</a>
+                                            </li>
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -405,6 +408,34 @@
             else {
                 nav.removeClass('active');
             }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Obtener la URL de la página actual
+            var currentPageUrl = window.location.pathname.toLowerCase();
+
+            // Remover la clase "active" de todos los elementos <li>
+            var activeItems = document.querySelectorAll('.pcoded-item li.active');
+            activeItems.forEach(function (activeItem) {
+                activeItem.classList.remove('active');
+            });
+
+            // Iterar sobre los elementos del menú
+            var menuItems = document.querySelectorAll('.pcoded-item a');
+            menuItems.forEach(function (menuItem) {
+                // Obtener el path del enlace del menú y convertirlo a minúsculas
+                var menuUrl = new URL(menuItem.href).pathname.toLowerCase();
+
+                // Comparar el path del menú con el path de la página actual
+                if (currentPageUrl === menuUrl) {
+                    // Agregar la clase "active" al elemento <li> del menú
+                    var parentLi = menuItem.closest('li');
+                    if (parentLi) {
+                        parentLi.classList.add('active');
+                    }
+                }
+            });
         });
     </script>
     @RenderSection("Scripts", required: false)

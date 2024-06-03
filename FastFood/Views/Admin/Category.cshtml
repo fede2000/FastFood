@@ -1,7 +1,8 @@
 ﻿@{
 	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-@model Category
+@model CategoryViewModel
+
 
 <div class="pcoded-inner-content pt-8">
 	<div class="main-body">
@@ -16,39 +17,79 @@
 								<div class="card-block">
 									<div class="row">
 										<div class="col-sm-6 col-md-1 col-lg-4">
-											<h4 class="sub-title">Categoria</h4>
+											<h4 class="sub-title">Agregar Categoria</h4>
 											<div>
 												<form asp-action="AddCategory" enctype="multipart/form-data">
 													<div class="form-group">
 														<label for="Name" class="form-label">Nombre de la Categoria</label>
-														<input asp-for="Name" type="text" class="form-control" id="Name" aria-describedby="Name" maxlength="100">
-														@Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+														<input asp-for="NewCategory.Name" type="text" class="form-control" id="Name" aria-describedby="Name" maxlength="100">
+														@Html.ValidationMessageFor(x => x.NewCategory.Name, "", new { @class = "text-danger" })
 													</div>
 
 													<div class="form-group">
 														<label for="ImageFile" class="form-label">Imagen de la Categoria</label>
-														<input asp-for="ImageFile" type="file" class="form-control" id="ImageFile" aria-describedby="ImageUrl" accept="image/*" onchange="previewImage(event)">
-														@Html.ValidationMessageFor(x => x.ImageFile, "", new { @class = "text-danger" })
+														<input asp-for="NewCategory.ImageFile" type="file" class="form-control" id="ImageFile" aria-describedby="ImageUrl" accept="image/*" onchange="previewImage(event)">
+														@Html.ValidationMessageFor(x => x.NewCategory.ImageFile, "", new { @class = "text-danger" })
 													</div>
 
 													<div class="form-check pl-4">
-														<input asp-for="IsActive" type="checkbox" class="form-check-input" id="IsActive"  aria-describedby="IsActive">
+														<input asp-for="NewCategory.IsActive" type="checkbox" class="form-check-input" id="IsActive" aria-describedby="IsActive">
 														<label for="IsActive" class="form-check-label">Habilitada</label>
-														@Html.ValidationMessageFor(x => x.IsActive, "", new { @class = "text-danger" })
+														@Html.ValidationMessageFor(x => x.NewCategory.IsActive, "", new { @class = "text-danger" })
 													</div>
 
 													<button type="submit" value="Category" class="btn btn-primary text-uppercase">Agregar</button>
 												</form>
 
 												<div class="mt-3">
-													@if (!string.IsNullOrEmpty(Model.ImageUrl))
+													@if (!string.IsNullOrEmpty(Model.NewCategory.ImageUrl))
 													{
-														<img id="imagePreview" src="@Model.ImageUrl" alt="Imagen de la Categoria" class="img-thumbnail" />
+														<img id="imagePreview" src="@Model.NewCategory.ImageUrl" alt="Imagen de la Categoria" class="img-thumbnail" />
 													}
 													else
 													{
 														<img id="imagePreview" src="" alt="Preview de la Imagen" class="img-thumbnail" style="display:none;" />
 													}
+												</div>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-8 col-lg-8 mobile-inputs">
+											<h4 class="sub-title">Lista de Categorias</h4>
+											<div class="card-block table-border-style">
+												<div class="table-responsive">
+													<table class="table table-striped table-hover">
+														<thead>
+															<tr>
+																<th>Nombre</th>
+																<th>Imagen</th>
+																<th>Habilitada</th>
+																<th>Creación</th>
+																<th>Acción</th>
+																<th></th>
+															</tr>
+														</thead>
+														<tbody>
+															@foreach (var item in Model.Categories)
+															{
+																<tr>
+																	<td>@item.Name</td>
+																	<td><img src="@item.ImageUrl" alt="Imagen de la Categoria" class="img-thumbnail" style="width:100px;" /></td>
+																	<td>@item.IsActive</td>
+																	<td>@item.CreateDate.ToLongDateString()</td>
+																	<td>
+																		<a asp-controller="Admin" asp-action="EditCategory" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+																			Editar
+																		</a>
+																		<a asp-controller="Admin" asp-action="DeleteCategory" asp-route-id="@item.Id" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?');">
+																			Eliminar
+																		</a>
+																	</td>
+																</tr>
+															}
+														</tbody>
+													</table>
+
 												</div>
 											</div>
 										</div>

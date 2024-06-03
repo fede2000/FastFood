@@ -29,15 +29,26 @@ namespace FastFood.Controllers
 
         public IActionResult Category()
         {
-            return View(new Category()); // Inicializar el modelo para la vista
+            ViewBag.Title = "Category";
+            ViewBag.Page = "Category";
+           
+            var rule = new CategoryRule(_configuration);
+            var categories = rule.GetCategories();
+            var viewModel = new CategoryViewModel
+            {
+                Categories = categories,
+                NewCategory = new Category()
+            };
+			return View(viewModel); 
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCategory(Category model)
+        public async Task<IActionResult> AddCategory(CategoryViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                if (model.ImageFile != null)
+				var model = viewModel.NewCategory;
+				if (model.ImageFile != null)
                 {
                     // Generar una ruta única para el archivo
                     var fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
@@ -61,14 +72,24 @@ namespace FastFood.Controllers
                     // Actualizar la propiedad ImageUrl con la ruta del archivo
                     model.ImageUrl = $"/uploads/{newFileName}";
                 }
+				model.CreateDate = DateTime.Now;
 
-                var rule = new CategoryRule(_configuration);
+				var rule = new CategoryRule(_configuration);
                 rule.InsertCategory(model);
 
                 return RedirectToAction("Category");
             }
-
-            return View("Category", model); // Si no es válido, retornar a la vista con el modelo
+			else
+			{
+				var errors = ModelState.Values.SelectMany(v => v.Errors);
+				foreach (var error in errors)
+				{
+					Console.WriteLine(error.ErrorMessage);
+				}
+			}
+			var rule1 = new CategoryRule(_configuration);
+			viewModel.Categories = rule1.GetCategories() ?? new List<Category>();
+			return View("Category", viewModel); // Si no es válido, retornar a la vista con el modelo
         }
     }
 }
