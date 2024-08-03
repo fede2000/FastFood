@@ -1,0 +1,224 @@
+﻿@    using Microsoft.AspNetCore.Mvc.TagHelpers
+@    using web.Utiles
+@model UserProfileViewModel
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Cambiar las pestañas cuando se hace clic en ellas
+            $('#myTab a').on('click', function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+
+            // Mostrar/Ocultar contenido según la pestaña activa
+            $('#myTab a').on('shown.bs.tab', function (e) {
+                var target = $(e.target).attr("href"); // Identificar la pestaña activa
+
+                // Ocultar todas las pestañas
+                $(".tab-pane").removeClass("show active");
+
+                // Mostrar la pestaña activa
+                $(target).addClass("show active");
+            });
+        });
+    </script>
+}
+<style>
+    .status-pending {
+        background-color: yellow;
+    }
+
+    .status-delivered {
+        background-color: green;
+    }
+</style>
+
+<section class=" book_section layout_padding " style="background-color: white;">
+    <div class="container">
+        <div class="heading_container">
+            <div>
+                <h2>Información del Usuario</h2>
+            </div>          
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title mb-4">
+                            <div class="d-flex justify-content-start">
+                                <div class="image-container">
+                                    <img src="@Model.User.ImageUrl" id="imgProfile" style="width:150px; height:150px;" class="img-thumbnail" />
+
+                                    <div class="middle pt-2">
+                                        <a asp-controller="User" asp-action="EditProfile" asp-route-id="Model.User.UserId" class="btn btn-warning"> <i class="fa fa-pencil"></i>Editar Información</a>
+                                    </div>
+                                </div>
+                                <div class="user-data ml-3">
+                                    <h2 class=" d-block" style="font-size: 1.5rem; font-weight: bold;"> @Model.User.Name</h2>
+                                    <h6 class="d-block">@Model.User.UserName</h6>
+                                    <h6 class="d-block">@Model.User.Email</h6>
+                                    <h6 class="d-block">@Model.User.CreatedDate</h6>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- Nav Tabs -->
+                                <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-info" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">
+                                            <i class="fa fa-id-badge mr-2"></i>Informacion basica
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-info" id="purchaseHistory-tab" data-toggle="tab" href="#purchaseHistory" role="tab" aria-controls="purchaseHistory" aria-selected="false">
+                                            <i class="fa fa-clock-o mr-2"></i>Historial de Compras
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab Content -->
+                                <div class="tab-content" id="myTabContent">
+                                    <!-- Información Básica -->
+                                    <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Nombre Completo</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                @Model.User.Name
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Username</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                @Model.User.UserName
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Email</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                @Model.User.Email
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Numero de Telefono</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                @Model.User.Mobile
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Dirección</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                @Model.User.Address
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Codigo Postal</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                @Model.User.PostCode
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Creado</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                @Model.User.CreatedDate
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    </div>
+
+                                    <!-- Historial de Compras -->
+                                    <div class="tab-pane fade" id="purchaseHistory" role="tabpanel" aria-labelledby="purchaseHistory-tab">
+                                        <div class="card-block table-border-style">
+                                            <div class="table-responsive">
+                                                @if (Model.Orders == null || !Model.Orders.Any())
+                                                {
+                                                    <p class="text-center">Todavía no has realizado ninguna orden.</p>
+                                                }
+                                                else
+                                                {
+                                                    <table class="table table-striped table-hover">
+                                                        <thead>
+                                                            <tr style="background-color: #3D3E46; color: white">
+                                                                <th>Nombre Producto</th>
+                                                                <th>Precio Unidad</th>
+                                                                <th>Cantidad</th>
+                                                                <th>Precio Total</th>
+                                                                <th>Order No</th>
+                                                                <th>Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var order in Model.Orders)
+                                                            {
+                                                                <tr style="background-color: darkgray">
+                                                                    <td colspan="6"><strong>Método de Pago:</strong> @order.PaymentMode</td>
+                                                                </tr>
+
+                                                                @if (order.Products != null && order.Products.Any())
+                                                                {
+                                                                    foreach (var product in order.Products)
+                                                                    {
+                                                                        <tr>
+                                                                            <td>@product.ProductName</td>
+                                                                            <td>$@product.Price</td>
+                                                                            <td>@product.Quantity</td>
+                                                                            <td>$@(product.Quantity * product.Price)</td>
+                                                                            <td>@order.OrderNo</td>
+                                                                            <td>@order.Status</td>
+                                                                        </tr>
+                                                                    }
+
+                                                                    // Total de cada orden
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td>$@order.Amount</td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="6" style="background-color: #f9f9f9;"></td>
+                                                                    </tr>
+                                                                }
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

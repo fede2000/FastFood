@@ -2,6 +2,9 @@
 	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 @model CategoryViewModel
+@{
+    var successMessage = TempData["SuccessMessage"] as string;
+}
 
 
 <div class="pcoded-inner-content pt-8">
@@ -13,9 +16,17 @@
 						<div class="card">
 							<div class="card-header">
 								<div class="card-header">
+									@if (!string.IsNullOrEmpty(successMessage))
+									{
+										<div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+											@successMessage
+											
+										</div>
+									}
 								</div>
 								<div class="card-block">
 									<div class="row">
+										
 										<div class="col-sm-6 col-md-1 col-lg-4">
 											<h4 class="sub-title">Agregar Categoria</h4>
 											<div>
@@ -75,13 +86,21 @@
 																<tr>
 																	<td>@item.Name</td>
 																	<td><img src="@item.ImageUrl" alt="Imagen de la Categoria" class="img-thumbnail" style="width:100px;" /></td>
-																	<td>@item.IsActive</td>
-																	<td>@item.CreateDate.ToLongDateString()</td>
 																	<td>
-																		<a asp-controller="Admin" asp-action="EditCategory" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+																		@if (item.IsActive)
+																		{
+																			<span class="badge bg-success text-white">Activa</span>
+																		}
+																		else
+																		{
+																			<span class="badge bg-danger text-white">Inactiva</span>
+																		}
+																	<td>@item.CreatedDate.ToLongDateString()</td>
+																	<td>
+																		<a asp-controller="Admin" asp-action="EditCategory" asp-route-id="@item.CategoryId" class="btn btn-primary btn-sm">
 																			Editar
 																		</a>
-																		<a asp-controller="Admin" asp-action="DeleteCategory" asp-route-id="@item.Id" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?');">
+																		<a asp-controller="Admin" asp-action="DeleteCategory" asp-route-id="@item.CategoryId" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?');">
 																			Eliminar
 																		</a>
 																	</td>
@@ -124,4 +143,16 @@
 			reader.readAsDataURL(input.files[0]);
 		}
 	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			var successAlert = document.getElementById("success-alert");
+			if (successAlert) {
+				setTimeout(function () {
+					var alert = new bootstrap.Alert(successAlert);
+					alert.close();
+				}, 2000); // El mensaje desaparecerá después de 3 segundos
+			}
+		});
+	</script>
+
 }

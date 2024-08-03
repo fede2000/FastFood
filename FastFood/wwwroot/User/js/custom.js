@@ -6,7 +6,17 @@ function getYear() {
 }
 
 getYear();
-
+$(document).ready(function () {
+    $('.user-profile.header-notification > a').on('click', function (event) {
+        event.preventDefault();
+        $(this).next('.profile-notification').toggleClass('show');
+    });
+    $(document).on('click', function (event) {
+        if (!$(event.target).closest('.user-profile.header-notification').length) {
+            $('.profile-notification').removeClass('show');
+        }
+    });
+});
 
 // isotope js
 $(window).on('load', function () {

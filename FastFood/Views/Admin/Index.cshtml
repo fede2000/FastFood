@@ -3,4 +3,149 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Dashboard page</h1>
+<div class="pcoded-inner-content pt-8">
+    <div class="main-body">
+        <div class="page-wrapper">
+            <div class="page-body">
+                <div class="row">
+
+
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card widget-card-1">
+                            <div class="card-block-small">
+                                <i class="icofont icofont-muffin bg-c-blue card1-icon"></i>
+                                <span class="text-c-blue f-w-600">Categorias</span>
+                                <h4>@Model.TotalCategories</h4>
+                                <div>
+                                    <span class="f-left m-t-10 text-muted">
+                                        <a asp-area="" asp-controller="Admin" asp-action="Category"><i class="text-c-blue f-16 icofont icofont-eye-alt m-r-10">Ver Detalles</i></a>
+                                    </span>
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                     <div class="col-md-6 col-xl-3">
+                        <div class="card widget-card-1">
+                            <div class="card-block-small">
+                                <i class="icofont icofont-fast-food bg-c-pink card1-icon"></i>
+                                <span class="text-c-pink f-w-600">Productos</span>
+                                <h4>@Model.TotalProducts</h4>
+                                <div>
+                                    <span class="f-left m-t-10 text-muted">
+                                        <a asp-area="" asp-controller="Admin" asp-action="Product"><i class="text-c-pink f-16 icofont icofont-eye-alt m-r-10">Ver Detalles</i></a>
+                                    </span>
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card widget-card-1">
+                            <div class="card-block-small">
+                                <i class="icofont icofont-spoon-and-fork bg-c-blue card1-icon"></i>
+                                <span class="text-c-blue f-w-600">Ordenes</span>
+                                <h4>@Model.TotalOrders</h4>
+                                <div>
+                                    <span class="f-left m-t-10 text-muted">
+                                        <a asp-area="" asp-controller="Admin" asp-action="UpdateOrderStatus"><i class="text-c-blue f-16 icofont icofont-eye-alt m-r-10">Ver Detalles</i></a>
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card widget-card-1">
+                            <div class="card-block-small">
+                                <i class="icofont icofont-fast-delivery bg-c-green card1-icon"></i>
+                                <span class="text-c-green f-w-600">Pedidos Entregados</span>
+                                <h4>@Model.DeliveredOrders </h4>
+                                <div>
+                                    <span class="f-left m-t-10 text-muted">
+                                        <a asp-area="" asp-controller="Admin" asp-action="UpdateOrderStatus"><i class="text-c-green f-16 icofont icofont-eye-alt m-r-10">Ver Detalles</i></a>
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="row">
+
+
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card widget-card-1">
+                            <div class="card-block-small">
+                                <i class="icofont icofont-delivery-time bg-c-pink card1-icon"></i>
+                                <span class="text-c-pink f-w-600">Pedidos Pendientes</span>
+                                <h4>@Model.PendingOrders</h4>
+                                <div>
+                                    <span class="f-left m-t-10 text-muted">
+                                        <a asp-area="" asp-controller="Admin" asp-action="UpdateOrderStatus"><i class="text-c-pink f-16 icofont icofont-eye-alt m-r-10">Ver Detalles</i></a>
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card widget-card-1">
+                            <div class="card-block-small">
+                                <i class="icofont icofont-users-social bg-c-blue card1-icon"></i>
+                                <span class="text-c-pink f-w-600">Usuarios</span>
+                                <h4>@Model.TotalUsers</h4>
+                                <div>
+                                    <span class="f-left m-t-10 text-muted">
+                                        <a asp-area ="" asp-controller="Admin" asp-action="User"><i class="text-c-pink f-16 icofont icofont-eye-alt m-r-10">Ver Detalles</i></a>
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card widget-card-1">
+                            <div class="card-block-small">
+                                <i class="icofont icofont-money-bag bg-c-green card1-icon"></i>
+                                <span class="text-c-green f-w-600">Total Vendido</span>
+                                <h4>@Model.TotalSold</h4>
+                                <div>
+                                    <span class="f-left m-t-10 text-muted">
+                                        <a asp-area="" asp-controller="Admin" asp-action="SellingReport"><i class="text-c-green f-16 icofont icofont-eye-alt m-r-10">Ver Detalles</i></a>
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card widget-card-1">
+                            <div class="card-block-small">
+                                <i class="icofont icofont-support-faq bg-c-yellow card1-icon"></i>
+                                <span class="text-c-yellow f-w-600">Feedbacks</span>
+                                <h4>@Model.TotalFeedbacks</h4>
+                                <div>
+                                    <span class="f-left m-t-10 text-muted">
+                                        <a asp-area="" asp-controller="Admin" asp-action="Contact"><i class="text-c-yellow f-16 icofont icofont-eye-alt m-r-10">Ver Detalles</i></a>
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

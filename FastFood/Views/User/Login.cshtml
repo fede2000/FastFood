@@ -1,0 +1,47 @@
+﻿@model User
+@{
+    var successMessage = TempData["SuccessMessage"] as string;
+}
+
+
+
+
+<section class="book_section layout_padding" style="background-color: white;">
+    <div class="container">
+        <div class="heading_container">
+            <h2>Iniciar Sesión</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <img id="userLogin" src="~/User/images/login.png" class="img-thumbnail" />
+            </div>
+            <div class="col-md-6">
+                <div class="form_container">
+                    <form asp-action="Login" method="post" enctype="multipart/form-data">
+                        
+                        
+                        <div class="mb-3">
+                            <label for="Email" class="form-label text-dark">Email</label>
+                            <input asp-for="Email" type="email" class="form-control" id="Email" placeholder="Email" required />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="Password" class="form-label text-dark">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" id="Password" placeholder="Password" required />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="btn_box">
+                            <button type="submit" class="btn btn-success rounded-pill pl-4 pr-4 text-white">Iniciar sesión</button>
+                        </div>
+                        
+                        <span class="pl-3 text-info">¿No estás registrado?
+                            <a href="~/User/Register" class="badge badge-info">Registrarse</a>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

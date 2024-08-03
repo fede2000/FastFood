@@ -1,0 +1,81 @@
+﻿@model ContactViewModel
+@{
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{
+	ViewBag.Title = "Delete Query";
+}
+
+<div class="pcoded-inner-content pt-8">
+	<div class="main-body">
+		<div class="page-wrapper">
+			<div class="page-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-header">
+								</div>
+								<div class="card-block">
+									<div class="row">
+
+										<div class="col-sm-6 col-md-8 col-lg-8 mobile-inputs">
+											<h2 class="sub-title">Eliminar Consult</h2>
+											<div class="card-block table-border-style">
+												<h4>¿Estas Seguro que quieres eliminar esta consulta?</h4>
+												<div class="table-responsive">
+													<table class="table table-striped table-hover">
+														<thead>
+															<tr>
+																
+																<th>Nombre</th>
+																<th>Email</th>
+																<th>Asunto</th>
+																<th>Mensaje</th>
+																<th>Fecha</th>
+																
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>@Model.NewContact.Name</td>
+																<td>@Model.NewContact.Email</td>
+																<td>@Model.NewContact.Subject</td>
+																<td>@Model.NewContact.Message</td>
+																<td>@Model.NewContact.CreatedDate.ToLongDateString()</td>
+															</tr>
+														</tbody>
+													</table>
+
+													<form asp-action="DeleteQuery" method="post">
+														<input type="hidden" asp-for="NewContact.ContactId" />
+														<button type="submit" class="btn btn-danger">Delete</button>
+														<a asp-action="Contact" class="btn btn-secondary">Cancel</a>
+													</form>
+
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}

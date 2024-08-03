@@ -1,0 +1,93 @@
+﻿@model EditProfileViewModel
+@{
+    var successMessage = TempData["SuccessMessage"] as string;
+}
+
+<section class="book_section layout_padding">
+    @if (!string.IsNullOrEmpty(successMessage))
+    {
+        <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+            @successMessage
+        </div>
+    }
+    <div class="container">
+        <div class="heading_container">
+            <h2 style="color: white">Editar Perfil</h2>
+        </div>
+        <!-- Mostrar mensajes de error de validación -->
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+            </div>
+        }
+        <div class="row">
+
+            <!-- Mostrar mensajes de error de validación -->
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <li>@error.ErrorMessage</li>
+                        }
+                    </ul>
+                </div>
+            }
+
+            <form asp-action="EditProfile" method="post" enctype="multipart/form-data" class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="Name" class="form-label text-light">Nombre</label>
+                        <input asp-for="Name" type="text" class="form-control" id="Name" placeholder="Your Name" required />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="UserName" class="form-label text-light">Nombre de Usuario</label>
+                        <input asp-for="UserName" type="text" class="form-control" id="UserName" placeholder="User Name" required />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Mobile" class="form-label text-light">Teléfono</label>
+                        <input asp-for="Mobile" type="text" class="form-control" id="Mobile" placeholder="Phone Number" required />
+                        <span asp-validation-for="Mobile" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Email" class="form-label text-light">Email</label>
+                        <input asp-for="Email" type="email" class="form-control" id="Email" placeholder="Your Email" required />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="Address" class="form-label text-light">Dirección</label>
+                        <input asp-for="Address" type="text" class="form-control" id="Address" placeholder="Address" required />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="PostCode" class="form-label text-light">Código Postal</label>
+                        <input asp-for="PostCode" type="text" class="form-control" id="PostCode" placeholder="Post Code" required />
+                        <span asp-validation-for="PostCode" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ImageFile" class="form-label text-light">Imagen de Perfil</label>
+                        <input asp-for="ImageFile" type="file" class="form-control" id="ImageFile" aria-describedby="ImageFile" accept="image/*" />
+                        <span asp-validation-for="ImageFile" class="text-danger"></span>
+                    </div>
+                    <!-- Campo oculto para ImageUrl -->
+                    <input asp-for="ImageUrl" type="hidden" />
+
+                    <div class="btn_box">
+                        <button type="submit" class="btn btn-primary">Editar perfil</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

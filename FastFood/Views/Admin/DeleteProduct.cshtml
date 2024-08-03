@@ -1,0 +1,83 @@
+﻿@model ProductViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{
+    ViewBag.Title = "Delete Product";
+}
+
+<div class="pcoded-inner-content pt-8">
+	<div class="main-body">
+		<div class="page-wrapper">
+			<div class="page-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-header">
+								</div>
+								<div class="card-block">
+									<div class="row">
+										
+										<div class="col-sm-6 col-md-8 col-lg-8 mobile-inputs">
+											<h2 class="sub-title">Eliminar Categoria</h2>
+											<div class="card-block table-border-style">
+												<h4>¿Estas Seguro que quieres eliminar esta categoria?</h4>
+												<div class="table-responsive">
+													<table class="table table-striped table-hover">
+														<thead>
+															<tr>
+																<th>Nombre</th>
+																<th>Imagen</th>
+																<th>Precio</th>
+																<th>Stock</th>
+																<th>Categoria</th>
+																<th>Estado</th>
+																<th>Creación</th>
+															</tr>
+														</thead>
+														   <tbody>
+															   <tr>
+																	<td>@Model.NewProduct.Name</td>
+																	<td><img src="@Model.NewProduct.ImageUrl" alt="Category Image" class="img-thumbnail" style="width:100px;" /></td>
+																	<td>@Model.NewProduct.Price</td>
+																	<td>@Model.NewProduct.Quantity</td>
+																	<td>@Model.NewProduct.CategoryId</td>
+																	<td>@Model.NewProduct.IsActive</td>
+																	<td>@Model.NewProduct.CreatedDate.ToLongDateString()</td>
+																</tr>
+															</tbody>
+													</table>
+
+													<form asp-action="DeleteProduct" method="post">
+														<input type="hidden" asp-for="NewProduct.ProductId" />
+														<button type="submit" class="btn btn-danger">Delete</button>
+														<a asp-action="Product" class="btn btn-secondary">Cancel</a>
+													</form>
+
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

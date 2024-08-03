@@ -26,12 +26,93 @@ File: style.css
 /**  =====================
       Custom css start
 ==========================  **/
+
+.food_section {
+    /* Estilos para la sección de comida */
+    padding: 50px 0; /* Ejemplo de relleno superior e inferior */
+    background-color: #f0f0f0; /* Ejemplo de color de fondo */
+    /* Otros estilos según sea necesario */
+}
+
+    .food_section .container {
+        /* Estilos específicos para el contenedor dentro de food_section */
+        background-color: white; /* Ejemplo de color de fondo */
+        /* Otros estilos según sea necesario */
+    }
+
+    .food_section h2 {
+        color: white; /* Color del texto del título */
+        /* Otros estilos del título según sea necesario */
+    }
+
+.filters_menu {
+    /* Estilos para el menú de filtros */
+    background-color: white; /* Ejemplo de color de fondo */
+    /* Otros estilos según sea necesario */
+}
+
+    .filters_menu li {
+        /* Estilos para los elementos de la lista de filtros */
+        color: black; /* Ejemplo de color del texto */
+        /* Otros estilos según sea necesario */
+    }
+
+.filters-content {
+    /* Estilos para el contenido filtrado */
+    /* Otros estilos según sea necesario */
+}
+
+    .filters-content .grid {
+        /* Estilos para el grid de productos */
+        /* Otros estilos según sea necesario */
+    }
+
+        .filters-content .grid .box {
+            /* Estilos para la caja de cada producto */
+            /* Otros estilos según sea necesario */
+        }
+
+            .filters-content .grid .box img {
+                /* Estilos para la imagen dentro de cada caja */
+                /* Otros estilos según sea necesario */
+            }
+
+            .filters-content .grid .box .detail-box {
+                /* Estilos para el cuadro de detalles dentro de cada caja */
+                /* Otros estilos según sea necesario */
+            }
+
+                .filters-content .grid .box .detail-box h5 {
+                    /* Estilos para el título del producto */
+                    /* Otros estilos según sea necesario */
+                }
+
+                .filters-content .grid .box .detail-box p {
+                    /* Estilos para la descripción del producto */
+                    /* Otros estilos según sea necesario */
+                }
+
+            .filters-content .grid .box .options {
+                /* Estilos para las opciones del producto */
+                /* Otros estilos según sea necesario */
+            }
+
+                .filters-content .grid .box .options h6 {
+                    /* Estilos para el precio del producto */
+                    /* Otros estilos según sea necesario */
+                }
+
+                .filters-content .grid .box .options a {
+                    /* Estilos para el enlace dentro de las opciones */
+                    /* Otros estilos según sea necesario */
+                }
 body {
   background-color: #f3f3f3;
   font-size: 0.875em;
   overflow-x: hidden;
   color: #353c4e;
   font-family: "Open Sans", sans-serif; }
+
 
 ul {
   padding-left: 0;
@@ -4000,6 +4081,9 @@ table tbody .border-bottom-info td {
 /**  =====================
       Left-side-menu css start
 ==========================  **/
+
+
+
 .main-menu {
   float: left;
   width: 270px;

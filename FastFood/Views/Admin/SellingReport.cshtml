@@ -1,0 +1,106 @@
+﻿@model List<SellingReport>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var fromDate = ViewBag.FromDate as string;
+    var toDate = ViewBag.ToDate as string;
+    var totalVendido = ViewBag.TotalVendido ?? 0m;
+    var currentPage = ViewBag.CurrentPage;
+    var totalPages = ViewBag.TotalPages;
+}
+<div class="pcoded-inner-content pt-8">
+    <div class="main-body">
+        <div class="page-wrapper">
+            <div class="page-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="container">
+                                    <div class="form-row">
+                                        <form asp-action="SellingReport" method="get">
+                                            <div class="form-group col-md-4">
+                                                <h2>Fecha</h2>
+                                                <label>Desde</label>
+                                                <input type="date" id="fromDate" name="fromDate" class="form-control" value="@fromDate" />
+                                                <label>Hasta</label>
+                                                <input type="date" id="toDate" name="toDate" class="form-control" value="@toDate" />
+                                                <button type="submit" class="btn btn-primary mt-2">Buscar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-12 mobile-inputs">
+                                        <h4 class="sub-title">Reporte de Ventas</h4>
+                                        <div class="card-block table-border-style">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>SrNo</th>
+                                                            <th>Nombre</th>
+                                                            <th>Email</th>
+                                                            <th>Item Orders</th>
+                                                            <th>Costo Total</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @if (Model == null || !Model.Any())
+                                                        {
+                                                            <tr>
+                                                                <td colspan="5" class="text-center">No hay datos disponibles en la tabla.</td>
+                                                            </tr>
+                                                        }
+                                                        else
+                                                        {
+                                                            @foreach (var item in Model)
+                                                            {
+                                                                <tr>
+                                                                    <td>@item.SrNo</td>
+                                                                    <td>@item.Name</td>
+                                                                    <td>@item.Email</td>
+                                                                    <td>@item.TotalOrders</td>
+                                                                    <td>@item.TotalPrice</td>
+                                                                </tr>
+                                                            }
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-12 d-flex justify-content-end">
+                                                <nav aria-label="Page navigation">
+                                                    <ul class="pagination">
+                                                        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                                                            <a class="page-link" asp-action="SellingReport" asp-route-page="@(currentPage - 1)" asp-route-fromDate="@fromDate" asp-route-toDate="@toDate">Anterior</a>
+                                                        </li>
+                                                        @for (int i = 1; i <= totalPages; i++)
+                                                        {
+                                                            <li class="page-item @(currentPage == i ? "active" : "")">
+                                                                <a class="page-link" asp-action="SellingReport" asp-route-page="@i" asp-route-fromDate="@fromDate" asp-route-toDate="@toDate">@i</a>
+                                                            </li>
+                                                        }
+                                                        <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                                                            <a class="page-link" asp-action="SellingReport" asp-route-page="@(currentPage + 1)" asp-route-fromDate="@fromDate" asp-route-toDate="@toDate">Siguiente</a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row pl-4">
+                                    <div class="col-12">
+                                        <p>Total Vendido: $@totalVendido.ToString()</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

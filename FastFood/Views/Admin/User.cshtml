@@ -1,0 +1,80 @@
+﻿@{
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model UserViewModel
+
+
+<div class="pcoded-inner-content pt-8">
+	<div class="main-body">
+		<div class="page-wrapper">
+			<div class="page-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-header">
+
+								</div>
+								<div class="card-block">
+									<div class="row">
+
+										
+
+										<div class="col-12 mobile-inputs">
+											<h4 class="sub-title">Lista de Usuarios</h4>
+											<div class="card-block table-border-style">
+												<div class="table-responsive">
+													<table class="table table-striped table-hover">
+														<thead>
+															<tr>
+																<th class="table-plus">SrNo</th>
+																<th>Nombre</th>
+																<th>Username</th>
+																<th>Email</th>
+																<th>Creación</th>
+																<th>Acción</th>
+																<th></th>
+															</tr>
+														</thead>
+														<tbody>
+															@{
+																var srNo = 1; // Inicializar el contador
+															}
+															@foreach (var item in Model.Users)
+															{
+																<tr>
+																	<td class="table-plus">@srNo</td>
+																	<td>@item.Name</td>
+																	<td>@item.UserName</td>
+																	<td>@item.Email</td>
+																		
+																	<td>@item.CreatedDate.ToLongDateString()</td>
+																	<td>
+																		
+																		<a asp-controller="Admin" asp-action="DeleteUser" asp-route-id="@item.UserId" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
+																			Eliminar
+																		</a>
+																	</td>
+																</tr>
+																srNo++;
+															}
+														</tbody>
+													</table>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

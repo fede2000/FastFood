@@ -1,5 +1,8 @@
 using FastFood.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Servicios;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +10,20 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Configuration.AddJsonFile($"appsettings.json");
 
+// Configurar autenticación con cookies
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/User/Login"; // Ruta página de inicio de sesión
+        options.LogoutPath = "/Account/Logout";
+        options.AccessDeniedPath = "/Account/AccessDenied";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(60); // Tiempo de expiración de la cookie
+        options.SlidingExpiration = true;
+    });
+
+builder.Services.AddScoped<ISecurityServices, SecurityServices>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSession();
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("FastFoodDB");
 
@@ -30,6 +47,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

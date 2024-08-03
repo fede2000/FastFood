@@ -1,0 +1,47 @@
+﻿@    using Microsoft.AspNetCore.Mvc.TagHelpers
+@    using web.Utiles
+@model User
+
+
+<li class="dropdown" style="list-style: none;">
+  <a id="userInfoNav" class="user-info-mini-foto dropdown-toggle text-secondary"
+     data-bs-toggle="dropdown"
+     style="padding-bottom: 10px; padding-top: 10px; cursor: pointer;"
+     >
+        @Model.UserName
+  </a>
+
+  <ul class="dropdown-menu dropdown-menu-end" style="background-color: goldenrod; padding: 10px;">
+        <li style="list-style: none;">
+      <div class="user-info" style="width: 300px; background-color: burlywood;  padding: 10px;">
+        <div class="user-info-foto">
+                    <img width="50" src="@Model.ImageUrl" alt="Usuario" class="rounded-circle" />
+        </div>
+        <div class="user-info-resto">
+           <div class="user-info-nombre">@Model.Name</div>
+           <div class="user-info-nombre">
+            <a class="text-dark user-info-link"
+                asp-controller="User" asp-action="UserProfile">
+                Ver Perfil
+            </a>
+           </div>
+        </div>
+      </div>
+    </li>
+    <li class="dropdown-divider"></li>
+    <li>
+      <div class="d-flex" style="align-items: end;">
+        <div class="flex-column d-flex" style="width: 90%;">
+
+            
+          <a class="text-dark user-info-link"
+             asp-controller="User" asp-action="Logout">
+            Cerrar Sesion
+          </a>
+        </div>
+       
+      </div>
+    </li>
+  </ul>
+</li>
+

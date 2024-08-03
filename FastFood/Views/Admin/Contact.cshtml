@@ -1,0 +1,86 @@
+﻿@{
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model ContactViewModel
+
+
+<div class="pcoded-inner-content pt-8">
+	<div class="main-body">
+		<div class="page-wrapper">
+			<div class="page-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-header">
+								</div>
+								<div class="card-block">
+									<div class="row">
+
+
+
+										<div class="col-12 mobile-inputs">
+											<h4 class="sub-title">Lista de Consultas</h4>
+											<div class="card-block table-border-style">
+												<div class="table-responsive">
+													<table class="table table-striped table-hover">
+														<thead>
+															<tr>
+																
+																<th>Nombre</th>
+																<th>Email</th>
+																<th>Asunto</th>
+																<th>Mensaje</th>
+																<th>Fecha</th>
+																<th></th>
+															</tr>
+														</thead>
+														<tbody>
+															@if (Model.Contacts == null || !Model.Contacts.Any())
+															{
+																<tr>
+																	<td colspan="6" class="text-center">No hay datos disponibles en la tabla.</td>
+																</tr>
+															}
+															else
+															{
+																
+																@foreach (var item in Model.Contacts)
+																{
+																	<tr>
+																		
+																		<td>@item.Name</td>
+																		<td>@item.Email</td>
+																		<td>@item.Subject</td>
+																		<td>@item.Message</td>
+																		<td>@item.CreatedDate.ToLongDateString()</td>
+																		<td>
+																			<a asp-controller="Admin" asp-action="DeleteQuery" asp-route-id="@item.ContactId" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar esta consulta?');">
+																				Eliminar
+																			</a>
+																		</td>
+																	</tr>
+																	
+																}
+															}
+														</tbody>
+													</table>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,77 @@
+﻿@model User
+@{
+    var successMessage = TempData["SuccessMessage"] as string;
+}
+
+
+<section class="book_section layout_padding">
+    @if (!string.IsNullOrEmpty(successMessage))
+    {
+        <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+            @successMessage
+        </div>
+    }
+    <div class="container">
+        <div class="heading_container">
+            <h2 style="color: white">Registrarse</h2>
+        </div>
+        <div class="row">
+            
+                
+                    <form asp-action="Register" method="post" enctype="multipart/form-data" class="row">
+                        <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="Name" class="form-label text-light">Nombre</label>
+                                    <input asp-for="Name" type="text" class="form-control" id="Name" placeholder="Your Name" required />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="UserName" class="form-label text-light">Nombre de Usuario</label>
+                                    <input asp-for="UserName" type="text" class="form-control" id="UserName" placeholder="User Name" required />
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="Mobile" class="form-label text-light">Teléfono</label>
+                                    <input asp-for="Mobile" type="text" class="form-control" id="Mobile" placeholder="Phone Number" required />
+                                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="Email" class="form-label text-light">Email</label>
+                                    <input asp-for="Email" type="email" class="form-control" id="Email" placeholder="Your Email" required />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                
+                        </div>
+                        <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="Address" class="form-label text-light">Dirección</label>
+                                    <input asp-for="Address" type="text" class="form-control" id="Address" placeholder="Address" required />
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="PostCode" class="form-label text-light">Código Postal</label>
+                                    <input asp-for="PostCode" type="text" class="form-control" id="PostCode" placeholder="Post Code" required />
+                                    <span asp-validation-for="PostCode" class="text-danger"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="Password" class="form-label text-light">Password</label>
+                                    <input asp-for="Password" type="password" id="Password" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="ImageFile" class="form-label text-light">Imagen de Perfil</label>
+                                    <input asp-for="ImageFile" type="file" class="form-control" id="ImageFile" aria-describedby="ImageFile" accept="image/*" />
+                                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                                </div>
+                        
+                                <div class="btn_box">
+                                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                                </div>
+                        </div>
+                        
+                    </form>
+                    
+               
+            
+        </div>
+    </div>
+</section>
