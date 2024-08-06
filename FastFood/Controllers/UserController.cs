@@ -1,17 +1,15 @@
-using FastFood.Models; // Importa el espacio de nombres que contiene los modelos de datos, como User, Contact, etc.
 using Microsoft.AspNetCore.Mvc; // Importa el espacio de nombres para la funcionalidad del controlador en ASP.NET Core
 using System.Diagnostics; // Importa el espacio de nombres para el seguimiento de actividades del sistema
 using FastFood.Rules; // Importa el espacio de nombres que contiene las reglas de negocio, como ProductRule, UserRule, etc.
 using Microsoft.AspNetCore.Authentication.Cookies; // Importa el espacio de nombres para la autenticación basada en cookies
 using Microsoft.AspNetCore.Authentication; // Importa el espacio de nombres para la autenticación en ASP.NET Core
-using Microsoft.AspNetCore.Mvc.ModelBinding; // Importa el espacio de nombres para la manipulación del ModelState
 using System.Security.Claims; // Importa el espacio de nombres para trabajar con Claims
+using FastFood.Models;
+
+using Microsoft.AspNetCore.Mvc.ModelBinding; // Importa el espacio de nombres para la manipulación del ModelState
 using Servicios; // Importa el espacio de nombres para servicios adicionales, como ISecurityServices
 using web.Utiles; // Importa el espacio de nombres que contiene utilidades para manejar sesiones
-using web.Models; // Importa el espacio de nombres que contiene modelos de vistas
-using System.Data;
-using FastFood.Models.Contact;
-using FastFood.Models.User; // Importa el espacio de nombres para trabajar con datos
+
 
 namespace FastFood.Controllers
 {

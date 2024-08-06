@@ -1,4 +1,4 @@
-﻿namespace FastFood.Models.Category
+﻿namespace FastFood.Models
 {
     public class CategoryViewModel
     {

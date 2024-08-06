@@ -1,5 +1,5 @@
 ﻿using Dapper; // Importa Dapper para la interacción con la base de datos
-using FastFood.Models.Payment; // Importa el espacio de nombres que contiene el modelo Payment
+using FastFood.Models;
 using Microsoft.Data.SqlClient; // Importa el espacio de nombres para trabajar con SQL Server
 using Microsoft.Extensions.Configuration; // Importa el espacio de nombres para acceder a la configuración de la aplicación
 

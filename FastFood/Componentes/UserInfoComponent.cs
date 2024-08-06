@@ -1,6 +1,5 @@
 ﻿
 using FastFood.Models;
-using FastFood.Models.User;
 using Microsoft.AspNetCore.Mvc;
 using web.Utiles;
 

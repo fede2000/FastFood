@@ -2,7 +2,7 @@
 using web.Utiles;
 using System.Collections.Generic;
 using System.Linq;
-using FastFood.Models.Cart;
+using FastFood.Models;
 
 namespace web.Componentes
 {

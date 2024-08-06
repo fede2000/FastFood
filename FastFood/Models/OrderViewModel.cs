@@ -1,6 +1,6 @@
-﻿using FastFood.Models.Order;
+﻿using FastFood.Models;
 
-namespace FastFood.Models.Contact
+namespace FastFood.Models
 {
     public class OrderViewModel
     {

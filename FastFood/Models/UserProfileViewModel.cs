@@ -1,6 +1,6 @@
-﻿using FastFood.Models.Order;
+﻿using FastFood.Models;
 
-namespace FastFood.Models.User
+namespace FastFood.Models
 {
     public class UserProfileViewModel
     {

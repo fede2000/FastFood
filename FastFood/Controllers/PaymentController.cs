@@ -1,13 +1,9 @@
-﻿using FastFood.Models.Cart;
-using FastFood.Models.Payment;
-using FastFood.Models.User;
+﻿using FastFood.Models;
 using FastFood.Rules; // Importa el espacio de nombres que contiene las reglas de negocio, como PaymentRule, OrderRule, etc.
 using Microsoft.AspNetCore.Mvc; // Importa el espacio de nombres para la funcionalidad del controlador en ASP.NET Core
 using Microsoft.Data.SqlClient; // Importa el espacio de nombres para manejar excepciones de SQL Server
-using System.Collections.Generic; // Importa el espacio de nombres para trabajar con colecciones genéricas
 using System.Data; // Importa el espacio de nombres para clases relacionadas con datos
-using System.Data.SqlTypes; // Importa el espacio de nombres para tipos de datos SQL
-using System.Linq; // Importa el espacio de nombres para consultas LINQ
+using System.Data.SqlTypes; // Importa el espacio de nombres para tipos de datos SQ
 using web.Utiles; // Importa el espacio de nombres que contiene utilidades para manejar sesiones, como Get y Set
 
 public class PaymentController : Controller

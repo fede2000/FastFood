@@ -1,4 +1,4 @@
-﻿using FastFood.Models.Order;
+﻿using FastFood.Models;
 using FastFood.Rules;
 using Microsoft.AspNetCore.Mvc;
 

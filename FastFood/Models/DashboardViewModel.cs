@@ -1,4 +1,4 @@
-﻿namespace FastFood.Models.DashboardAdmin
+﻿namespace FastFood.Models
 {
     public class DashboardViewModel
     {

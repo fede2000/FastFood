@@ -1,4 +1,4 @@
-﻿namespace FastFood.Models.SellingReport
+﻿namespace FastFood.Models
 {
     public class SellingReport
     {

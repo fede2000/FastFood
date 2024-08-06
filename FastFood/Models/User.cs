@@ -1,4 +1,4 @@
-﻿namespace FastFood.Models.User
+﻿namespace FastFood.Models
 {
     public class User
     {

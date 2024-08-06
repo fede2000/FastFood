@@ -1,6 +1,5 @@
 ﻿using Dapper; // Importa Dapper para la interacción con la base de datos
 using FastFood.Models; // Importa el espacio de nombres que contiene los modelos de la aplicación
-using FastFood.Models.User; // Importa el espacio de nombres que contiene el modelo User
 using Microsoft.Data.SqlClient; // Importa el espacio de nombres para trabajar con SQL Server
 
 namespace FastFood.Rules

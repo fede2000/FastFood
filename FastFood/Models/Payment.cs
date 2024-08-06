@@ -1,4 +1,4 @@
-﻿namespace FastFood.Models.Payment
+﻿namespace FastFood.Models
 {
     public class Payment
     {

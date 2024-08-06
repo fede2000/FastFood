@@ -1,5 +1,5 @@
 ﻿using Dapper; // Importa Dapper, una biblioteca ORM para realizar consultas a bases de datos de manera sencilla
-using FastFood.Models.Contact; // Importa el espacio de nombres que contiene el modelo Contact
+using FastFood.Models;
 using Microsoft.Data.SqlClient; // Importa el espacio de nombres para trabajar con SQL Server
 
 namespace FastFood.Rules

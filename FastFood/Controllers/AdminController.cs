@@ -1,8 +1,5 @@
 ﻿using FastFood.Models;
-using FastFood.Models.Category;
-using FastFood.Models.Contact;
-using FastFood.Models.Product;
-using FastFood.Models.SellingReport;
+
 using FastFood.Rules;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

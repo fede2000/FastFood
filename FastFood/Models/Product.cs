@@ -1,4 +1,4 @@
-﻿namespace FastFood.Models.Product
+﻿namespace FastFood.Models
 {
     public class Product
     {

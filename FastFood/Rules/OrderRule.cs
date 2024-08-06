@@ -1,5 +1,5 @@
 ﻿using Dapper; // Importa Dapper, una biblioteca ORM para facilitar el acceso a la base de datos
-using FastFood.Models.Order; // Importa el espacio de nombres que contiene los modelos Order y OrderDetailsViewModel
+using FastFood.Models;
 using Microsoft.Data.SqlClient; // Importa el espacio de nombres para trabajar con SQL Server
 using Microsoft.Extensions.Configuration; // Importa el espacio de nombres para manejar la configuración
 using System.Data; // Importa el espacio de nombres para trabajar con tipos de datos relacionados con la base de datos

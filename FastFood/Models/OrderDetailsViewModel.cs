@@ -1,4 +1,4 @@
-﻿namespace FastFood.Models.Order
+﻿namespace FastFood.Models
 {
     public class OrderDetailsViewModel
     {

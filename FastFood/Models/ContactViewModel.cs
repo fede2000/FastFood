@@ -1,4 +1,4 @@
-﻿namespace FastFood.Models.Contact
+﻿namespace FastFood.Models
 {
     public class ContactViewModel
     {

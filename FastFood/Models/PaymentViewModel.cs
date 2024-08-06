@@ -1,6 +1,4 @@
-﻿using FastFood.Models.Cart;
-
-namespace FastFood.Models.Payment
+﻿namespace FastFood.Models
 {
     public class PaymentViewModel
     {

@@ -1,4 +1,4 @@
-﻿namespace FastFood.Models.Menu
+﻿namespace FastFood.Models
 {
     public class MenuViewModel
     {

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using FastFood.Rules;
 using System.Configuration;
 using Microsoft.AspNetCore.Hosting;
-using FastFood.Models.User;
+using FastFood.Models;
 
 
 namespace Servicios;

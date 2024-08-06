@@ -1,4 +1,4 @@
-﻿using FastFood.Models.Cart;
+﻿using FastFood.Models;
 using Microsoft.AspNetCore.Authorization; // Importa el espacio de nombres para la autorización en ASP.NET Core
 using Microsoft.AspNetCore.Mvc; // Importa el espacio de nombres para la funcionalidad del controlador en ASP.NET Core
 using web.Utiles; // Importa el espacio de nombres que contiene utilidades para manejar sesiones, como Get y Set

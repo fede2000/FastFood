@@ -1,4 +1,4 @@
-﻿namespace FastFood.Models.Cart
+﻿namespace FastFood.Models
 {
     public class CartItem
     {
